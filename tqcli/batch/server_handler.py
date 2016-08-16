@@ -102,11 +102,11 @@ class TranQuant(object):
     def is_valid(self):
         if not self.client.datasource_id:
             logger.debug(self.client.__dict__)
-            raise Exception('You forgot to provide Data Source ID :)')
+            raise Exception('You forgot to provide a Data Source ID :)')
 
         if not self.client.dataset_id:
             logger.debug(self.client.__dict__)
-            raise Exception('You forgot to provide Data Set ID :)')
+            raise Exception('We could not create a Data Set ID :(')
 
         if not self.client.token:
             logger.debug(self.client.__dict__)
