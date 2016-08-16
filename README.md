@@ -1,52 +1,35 @@
+
+# TQCLI - TranQuant Client
+TQCLI is the client application for using [TranQuant services](http://tranquant.com)
+
+[TranQuant](http://tranquant.com) is a data marketplace that delivers real-time or batch data at a large scale from suppliers to end-users.
+
+This client will allow you to upload and download data to and from TranQuant platform efficiently
+
+
+## How to install TQCLI?
+
+If you have pip installed:
+
+    pip install tqcli
+
+If you don't have pip installed:
+
+    git clone https://github.com/Tranquant/tqcli.git
+    cd tqcli
+    pip install .
+
+## How to use TQCLI?
+
+    # 1- Create a Data Source on http://tranquant.com website
+    # 2- You will see a command generated with datasource id that looks like:
     
-    ___________________    _________  .____     .___ 
-    \__    ___/\_____  \   \_   ___ \ |    |    |   |
-      |    |    /  / \  \  /    \  \/ |    |    |   |
-      |    |   /   \_/.  \ \     \____|    |___ |   |
-      |____|   \_____\ \_/  \______  /|_______ \|___|
-                      \__>         \/         \/     
-
-                                           TranQuant Client
-                                                Version 1.0
+    tqcli --datasource-id <a-datasource-id> --input <path-to-dataset-file>
+    
+    # 3- Go back to http://tranquant.com and view your published datasource
+    # 4- You will find the dataset available under that datasource now!
 
 
-## Setup
+If you have any questions please contact us `info@tranquant.com`
 
-Setup and activate virtualenv:
-
-```
-virtualenv ~/.virtualenvs/tqcli
-source ~/.virtualenvs/tqcli/bin/activate
-```
-
-Install dependencies:
-
-```
-pip install -r requirements.txt
-```
-
-## Usage
-
-Upload a new dataset to an existing datasouce
-
-```
-python tq.py --input <dataset.file> --token <user-token> --datasource-id <datasource-id>
-```
-
-ex)
-
-```
-$ python tq.py --input data\all-shakespeare.txt --token SECRET_TOKEN --datasource-id 524b0f9f-d829-4ea7-8e62-e06d21b3dd13
-Initiated upload
-Uploading part 1 of 2 (5242880 bytes)
-Uploading part 2 of 2 (99881 bytes)
-Upload complete!
-
-```
-
-## The flow
-
-- TQCli starts to read the file in chunks, the size of the chunks is set in `config.py`
-- Creates a multipart request
-- Uploads each part of the file
-- Completes the multipart request when all parts are uploaded
+You can also join our channel: [![Gitter](https://badges.gitter.im/tqcli/Lobby.svg)](https://gitter.im/tqcli/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=body_badge)

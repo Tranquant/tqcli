@@ -53,16 +53,17 @@ def main():
         datasource_id=options.datasource_id,
         dataset_id=options.dataset_id
     )
+    print('\n\n')
     try:
         tq.is_valid()
         tq.upload(input_path=options.input_path)
     except Exception as ex:
         logger.info(ex)
-        print('-'*50, '\n\n')
+        print('\n', '-'*50, '\n')
         print('TQCLI - For debugging please take a look at %s' % LOG_PATH)
         print('\n')
         print('With your feedback we will become more friendly! tell us what to do -> info@tranquant.com \n\t ~ Your friends at TranQuant.')
-        print('\n\n', '-' * 50)
+        print('\n', '-' * 50)
 
 if __name__ == '__main__':
     main()
