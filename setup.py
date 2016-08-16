@@ -4,13 +4,17 @@ from setuptools import setup
 
 requirements = [l.split('=')[0] for l in open('requirements.txt', 'r').read().split('\n') if l]
 
-def read(fname):
-    return open(os.path.join(os.path.dirname(__file__), fname)).read()
+
+def read(name):
+    return open(os.path.join(os.path.dirname(__file__), name)).read()
 
 setup(
     name='tqcli',
-    version='1.0',
-    description=read('README.md'),
+    version='0.3',
+    description=(
+        'TQCLI is the client application for using TranQuant services\n'
+        'TranQuant is a data marketplace that delivers real-time or batch data at a large scale from suppliers to end-users.'
+    ),
     url='http://github.com/tranquant/tqcli',
     author='Mehrdad Pazooki, Sean Glover, Rodrigo Abreu',
     author_email='mehrdad@tranquant.com',
