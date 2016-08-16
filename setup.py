@@ -10,7 +10,7 @@ def read(name):
 
 setup(
     name='tqcli',
-    version='0.3.0.1',
+    version='0.3.0.2',
     description=(
         'TQCLI is the client application for using TranQuant services\n'
         'TranQuant is a data marketplace that delivers real-time or batch data at a large scale from suppliers to end-users.'
