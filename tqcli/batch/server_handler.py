@@ -4,8 +4,8 @@ import base64
 import os
 import logging
 
-from tqcli.batch.file_manager import TQFile
-from tqcli.config.config import DEFAULT_CHUNK_SIZE
+from batch.file_manager import TQFile
+from config.config import DEFAULT_CHUNK_SIZE
 
 logger = logging.getLogger(os.path.basename(__file__))
 
