@@ -1,5 +1,5 @@
-from config.config import TQ_API_ROOT_URL, LOG_PATH
-from batch.server_handler import TranQuant
+from tqcli.config.config import TQ_API_ROOT_URL, LOG_PATH
+from tqcli.batch.server_handler import TranQuant
 
 import optparse
 import logging
