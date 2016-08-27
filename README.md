@@ -12,13 +12,13 @@ This client will allow you to upload and download data to and from TranQuant pla
 
 If you have pip installed:
 
-    pip install tqcli
+    pip3 install tqcli --no-cache-dir
 
 If you don't have pip installed:
 
     git clone https://github.com/Tranquant/tqcli.git
     cd tqcli
-    pip install .
+    python3 setup.py install
 
 ## How to use TQCLI?
 
