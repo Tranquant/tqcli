@@ -16,7 +16,7 @@ python setup.py sdist upload -r pypi
 
 setup(
     name='tqcli',
-    version='0.3.0.12',
+    version='0.3.0.13',
     description=(
         'TQCLI is the client application for using TranQuant services\n'
         'TranQuant is a data marketplace that delivers real-time or batch data at a large scale from suppliers to end-users.'
