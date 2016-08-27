@@ -1,5 +1,5 @@
 import requests
-import ujson
+import json
 import base64
 import os
 import logging
@@ -40,11 +40,11 @@ class Client(object):
           'datasource_id': self.datasource_id,
           'filename': filename
         }
-        response = self.session.post(url, data=ujson.dumps(payload))
+        response = self.session.post(url, data=json.dumps(payload))
         logger.info('Initiated upload response ' + str(response.content))
         if response.status_code == 401:
             raise Exception("We could not authenticate :( your token doesn't seem to be valid!")
-        return ujson.loads(response.content)
+        return json.loads(response.content.decode('utf-8'))
 
     def upload_part(self, upload_id, part_size, part_number, part, filename, total_parts):
         url = self.root_url + Client.endpoints['part']
@@ -57,12 +57,12 @@ class Client(object):
             'upload_id': upload_id,
             'part_number': part_number,
             'part_size': part_size,
-            'base64_part': base64.b64encode(part)
+            'base64_part': base64.b64encode(part).decode('utf-8')
         }
         logger.info("Uploading part %s of %s (%s bytes)" % (part_number, total_parts, part_size))
-        response = self.session.post(url, data=ujson.dumps(payload))
+        response = self.session.post(url, data=json.dumps(payload))
         if response.status_code == 200:
-            return ujson.loads(response.content)
+            return json.loads(response.content.decode('utf-8'))
         else:
             logger.debug(response.content)
             raise Exception('Failed to upload part - Response Status: %d' % response.status_code)
@@ -78,7 +78,7 @@ class Client(object):
             'upload_id': upload_id,
             'part_tags': part_tags
         }
-        response = self.session.post(url, data=ujson.dumps(payload))
+        response = self.session.post(url, data=json.dumps(payload))
         if response.status_code == 200:
             logger.info("Yes! Upload completed!")
         else:

@@ -69,6 +69,7 @@ def main():
         print('\n')
         print('With your feedback we will become more friendly! tell us what to do -> info@tranquant.com \n\t ~ Your friends at TranQuant.')
         print('\n', '-' * 50)
+        print(ex)
 
 if __name__ == '__main__':
     main()
