@@ -35,6 +35,14 @@ class Client(object):
             for chunk_iterator, bytes_to_be_read, from_byte, to_byte, remained_bytes, a_chunk, total_chunks in tq_file.chunks()]
         self.upload_complete(upload_id, part_tags, filename)
 
+    def _format_response(self, content):
+        return '\tFile Name: %s\n\tData Source ID: %s\n\tData Set ID: %s\n\tUpload ID: %s' % (
+            content.get('file').get('filename'),
+            content.get('file').get('datasource_id'),
+            content.get('file').get('dataset_id'),
+            content.get('upload_id'),
+        )
+
     def initiate_multipart_upload(self, filename):
         url = self.root_url + Client.endpoints['initiate']
         payload = {
@@ -42,7 +50,7 @@ class Client(object):
           'filename': filename
         }
         response = self.session.post(url, data=json.dumps(payload))
-        logger.info('Initiated upload response ' + str(response.content))
+        logger.info('Initiated upload response...\n' + self._format_response(response.content))
         if response.status_code == 401:
             raise Exception("We could not authenticate :( your token doesn't seem to be valid!")
         return json.loads(response.content.decode('utf-8'))
@@ -100,6 +108,7 @@ class TranQuant(object):
             if not tq_file.is_valid():
               raise Exception("This file does not seem to be valid!")
             self.client.upload_file_in_parts(tq_file)
+        logger.info('-'*80)
 
     def is_valid(self):
         if not self.client.datasource_id:
