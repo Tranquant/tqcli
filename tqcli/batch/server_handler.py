@@ -50,7 +50,7 @@ class Client(object):
           'filename': filename
         }
         response = self.session.post(url, data=json.dumps(payload))
-        logger.info('Initiated upload response...\n' + self._format_response(json.loads(response.content)))
+        logger.info('Initiated upload response...\n' + self._format_response(json.loads(str(response.content))))
         if response.status_code == 401:
             raise Exception("We could not authenticate :( your token doesn't seem to be valid!")
         return json.loads(response.content.decode('utf-8'))
