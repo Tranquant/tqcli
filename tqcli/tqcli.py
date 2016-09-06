@@ -62,7 +62,8 @@ def main():
     print('\n\n')
     try:
         tq.is_valid()
-        for path in glob.glob(options.input_path):
+        paths = glob.glob(options.input_path)
+        for path in paths:
             tq.upload(input_path=path)
     except Exception as ex:
         logger.info(ex)
