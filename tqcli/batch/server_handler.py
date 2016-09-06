@@ -3,6 +3,7 @@ import json
 import base64
 import os
 import logging
+import glob
 
 from tqcli.batch.file_manager import TQFile
 from tqcli.config.config import DEFAULT_CHUNK_SIZE
@@ -94,10 +95,11 @@ class TranQuant(object):
         self.client = Client(root_url, token, datasource_id, dataset_id)
 
     def upload(self, input_path):
-        tq_file = TQFile(input_path, chunk_size=DEFAULT_CHUNK_SIZE)
-        if not tq_file.is_valid():
-          raise Exception("This file does not seem to be valid!")
-        self.client.upload_file_in_parts(tq_file)
+        for path in glob.glob(input_path):
+            tq_file = TQFile(path, chunk_size=DEFAULT_CHUNK_SIZE)
+            if not tq_file.is_valid():
+              raise Exception("This file does not seem to be valid!")
+            self.client.upload_file_in_parts(tq_file)
 
     def is_valid(self):
         if not self.client.datasource_id:
