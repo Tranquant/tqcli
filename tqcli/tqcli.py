@@ -1,3 +1,4 @@
+import glob
 import optparse
 import logging
 import os
@@ -61,7 +62,8 @@ def main():
     print('\n\n')
     try:
         tq.is_valid()
-        tq.upload(input_path=options.input_path)
+        for path in glob.glob(options.input_path):
+            tq.upload(input_path=path)
     except Exception as ex:
         logger.info(ex)
         print('\n', '-'*50, '\n')
